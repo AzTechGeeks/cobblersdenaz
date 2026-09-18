@@ -28,6 +28,6 @@ Copy `index.html` to the web root of the host for cobblersdenaz.com. Nothing els
 ## Content notes
 
 - Hours: Mon–Fri 8:30–5, Sat 9–3, Sun closed. The "Open now" indicator runs on `America/Phoenix` (no DST).
-- Phone 602-953-1266 · contactus@cobblersdenaz.com · 12871 N. Tatum Blvd, Phoenix, AZ 85032, across from Paradise Valley Mall.
+- Phone 602-953-1266 · 12871 N. Tatum Blvd, Phoenix, AZ 85032, across from Paradise Valley Mall.
 - There is deliberately no contact form — every "free estimate" button is a `tel:` link to the shop.
 - Stock photography is from Unsplash (license permits commercial use without attribution). Replace with the shop's own photos when available; the hero and the six category tiles are the first candidates.
