@@ -1,0 +1,726 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cobbler's Den</title>
+<meta name="description" content="Cobbler's Den Shoe & Luggage Repair, Paradise Valley, Phoenix. Two generations of cobblers since 1988. Shoes, boots, handbags, luggage. Free estimates. Mail-in across the US & Canada.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --bench: #16130F;
+    --bench-2: #221D17;
+    --kraft: #E8DFCF;
+    --kraft-2: #DDD2BE;
+    --kraft-3: #F2ECE0;
+    --ink: #1B1713;
+    --ink-2: #3E362E;
+    --muted: #6F655A;
+    --line: #C9BCA5;
+    --oxblood: #6E1E1E;
+    --oxblood-2: #521414;
+    --thread: #D9A441;
+    --thread-2: #B8862E;
+    --on-dark: #F2ECE0;
+    --on-dark-2: #BFB4A2;
+    --cond: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', Impact, sans-serif;
+    --body: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+  body {
+    margin: 0; background: var(--kraft); color: var(--ink);
+    font-family: var(--body); font-size: 17px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; padding-bottom: 78px;
+  }
+  @media (min-width: 900px) { body { padding-bottom: 0; } }
+  img { max-width: 100%; display: block; height: auto; }
+  a { color: var(--oxblood); }
+  :focus-visible { outline: 3px solid var(--thread); outline-offset: 2px; }
+  h1, h2, h3, h4 { font-family: var(--cond); font-weight: 800; text-transform: uppercase; line-height: .92; margin: 0; letter-spacing: -.005em; text-wrap: balance; }
+  h1 { font-size: clamp(3.2rem, 12vw, 7.5rem); }
+  h2 { font-size: clamp(2.6rem, 7vw, 4.6rem); }
+  h3 { font-size: 1.75rem; font-weight: 700; line-height: 1; }
+  p { margin: 0; }
+  .lede { font-size: 1.12rem; color: var(--ink-2); max-width: 56ch; }
+  .tag {
+    display: inline-block; font-family: var(--cond); font-weight: 700; font-size: .95rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--thread-2);
+  }
+  .tag::before { content: ""; display: inline-block; width: 22px; height: 2px; background: var(--thread); vertical-align: middle; margin-right: 10px; }
+  .wrap { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 18px; }
+  @media (min-width: 640px) { .wrap { padding-inline: 32px; } }
+  section { padding-block: 60px; }
+  @media (min-width: 900px) { section { padding-block: 96px; } }
+  .head { display: grid; gap: 14px; margin-bottom: 30px; max-width: 64ch; }
+  @media (min-width: 900px) { .head { margin-bottom: 44px; } }
+
+  /* grain overlay for dark surfaces */
+  .grain { position: relative; isolation: isolate; }
+  .grain::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: .13; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .grain > * { position: relative; z-index: 1; }
+
+  /* stitched edge */
+  .stitch { position: relative; }
+  .stitch::before { content: ""; position: absolute; inset: 7px; border: 1.5px dashed rgba(217,164,65,.55); pointer-events: none; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 54px; padding: 0 26px; border: 2px solid transparent;
+    font-family: var(--cond); font-weight: 700; font-size: 1.2rem; letter-spacing: .08em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer; transition: background .15s, color .15s, border-color .15s, transform .1s; white-space: nowrap;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-ox { background: var(--oxblood); color: #fff; border-color: var(--oxblood); }
+  .btn-ox:hover { background: var(--oxblood-2); border-color: var(--oxblood-2); color: #fff; }
+  .btn-thread { background: var(--thread); color: var(--ink); border-color: var(--thread); }
+  .btn-thread:hover { background: #E4B455; border-color: #E4B455; }
+  .btn-out-light { background: transparent; color: var(--on-dark); border-color: rgba(242,236,224,.5); }
+  .btn-out-light:hover { border-color: var(--on-dark); color: var(--on-dark); }
+  .btn-out-dark { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-out-dark:hover { background: var(--ink); color: var(--kraft); }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+
+  /* Top strip */
+  .strip { background: var(--bench); color: var(--on-dark-2); font-family: var(--cond); font-weight: 600; font-size: .9rem; letter-spacing: .14em; text-transform: uppercase; overflow: hidden; }
+  .strip .wrap { display: flex; justify-content: center; gap: 28px; padding-block: 8px; white-space: nowrap; }
+  .strip span b { color: var(--thread); font-weight: 700; }
+  .strip .hide-m { display: none; }
+  @media (min-width: 700px) { .strip .hide-m { display: inline; } }
+
+  /* Header */
+  header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: var(--kraft); border-bottom: 2px solid var(--ink); }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 66px; }
+  .brand { display: grid; text-decoration: none; color: var(--ink); line-height: 1; }
+  .brand-name { font-family: var(--cond); font-weight: 800; font-size: 1.7rem; text-transform: uppercase; letter-spacing: .02em; }
+  .brand-sub { font-family: var(--cond); font-weight: 600; font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: var(--oxblood); margin-top: 2px; }
+  nav.primary { display: none; }
+  nav.primary ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+  nav.primary a { display: block; padding: 8px 12px; text-decoration: none; color: var(--ink); font-family: var(--cond); font-weight: 700; font-size: 1.05rem; letter-spacing: .1em; text-transform: uppercase; border-bottom: 2px solid transparent; }
+  nav.primary a:hover { border-bottom-color: var(--oxblood); }
+  .hdr-call { display: none; }
+  .menu-btn { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; background: transparent; border: 2px solid var(--ink); color: var(--ink); cursor: pointer; }
+  .menu-btn svg { width: 24px; height: 24px; }
+  @media (min-width: 900px) { nav.primary { display: block; } .hdr-call { display: inline-flex; min-height: 44px; font-size: 1.05rem; } .menu-btn { display: none; } }
+  .drawer { display: none; background: var(--kraft); border-top: 1px solid var(--line); }
+  .drawer.open { display: block; }
+  .drawer ul { list-style: none; margin: 0; padding: 6px 18px 18px; }
+  .drawer a { display: block; padding: 14px 4px; color: var(--ink); text-decoration: none; font-family: var(--cond); font-weight: 700; font-size: 1.6rem; letter-spacing: .06em; text-transform: uppercase; border-bottom: 1px solid var(--line); }
+  .drawer li:last-child a { border-bottom: 0; }
+  @media (min-width: 900px) { .drawer { display: none !important; } }
+
+  /* Hero */
+  .hero { position: relative; background: var(--bench); color: var(--on-dark); padding: 0; overflow: hidden; }
+  .hero-img { position: absolute; inset: 0; }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  .hero-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,19,15,.35) 0%, rgba(22,19,15,.55) 45%, rgba(22,19,15,.92) 100%); }
+  @media (min-width: 900px) { .hero-img::after { background: linear-gradient(90deg, rgba(22,19,15,.92) 0%, rgba(22,19,15,.72) 45%, rgba(22,19,15,.25) 100%); } }
+  .hero .wrap { position: relative; display: grid; gap: 22px; padding-block: 72px 40px; min-height: 560px; align-content: end; }
+  @media (min-width: 900px) { .hero .wrap { min-height: 680px; padding-block: 96px 64px; max-width: 1200px; } }
+  .hero .tag { color: var(--thread); }
+  .hero .tag::before { background: var(--thread); }
+  .hero h1 { color: var(--on-dark); max-width: 11ch; }
+  .hero h1 span { color: var(--thread); }
+  .hero .lede { color: var(--on-dark-2); }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+  .hero-ctas .btn { flex: 1 1 200px; }
+  @media (min-width: 900px) { .hero-ctas .btn { flex: 0 0 auto; } }
+  .hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(242,236,224,.2); }
+  .hero-facts div { display: grid; gap: 2px; }
+  .hero-facts b { font-family: var(--cond); font-weight: 800; font-size: clamp(1.6rem, 5vw, 2.4rem); line-height: 1; color: var(--on-dark); }
+  .hero-facts span { font-size: .8rem; color: var(--on-dark-2); letter-spacing: .04em; text-transform: uppercase; font-family: var(--cond); font-weight: 600; }
+  @media (min-width: 900px) { .hero-facts { max-width: 520px; } }
+
+  /* Awards bar */
+  .awards { background: var(--kraft-3); border-bottom: 1px solid var(--line); padding-block: 0; }
+  .awards .wrap { display: grid; gap: 20px; padding-block: 32px; justify-items: center; text-align: center; }
+  .award-imgs { display: flex; flex-wrap: wrap; gap: 14px; align-items: end; justify-content: center; }
+  .award-imgs img { height: 150px; width: auto; }
+  @media (min-width: 640px) { .award-imgs img { height: 180px; } }
+  .award-text { max-width: 52ch; display: grid; gap: 6px; }
+  .award-text b { font-family: var(--cond); font-weight: 800; font-size: 2rem; text-transform: uppercase; display: block; line-height: 1; }
+  .award-text span { color: var(--muted); font-size: .98rem; }
+
+  /* Category photo grid */
+  .cats { display: grid; gap: 12px; }
+  @media (min-width: 640px) { .cats { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .cats { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+  .cat { position: relative; display: block; text-decoration: none; color: var(--on-dark); background: var(--bench); aspect-ratio: 4 / 3; max-width: 100%; overflow: hidden; }
+  .cat img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .cat:hover img { transform: scale(1.04); }
+  .cat::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,19,15,0) 30%, rgba(22,19,15,.88) 100%); }
+  .cat-body { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px; z-index: 1; display: grid; gap: 6px; }
+  .cat-body h3 { color: var(--on-dark); font-size: 2rem; }
+  .cat-body p { font-size: .9rem; color: var(--on-dark-2); line-height: 1.4; }
+  .cat-body .more { font-family: var(--cond); font-weight: 700; font-size: .95rem; letter-spacing: .12em; text-transform: uppercase; color: var(--thread); margin-top: 4px; }
+
+  /* Bench notes — service details */
+  .notes { background: var(--kraft-3); }
+  .notes-grid { display: grid; gap: 0; border-top: 2px solid var(--ink); }
+  @media (min-width: 800px) { .notes-grid { grid-template-columns: repeat(2, 1fr); column-gap: 48px; } }
+  .note { padding: 22px 0; border-bottom: 1px solid var(--line); display: grid; gap: 10px; align-content: start; }
+  .note h3 { font-size: 1.5rem; display: flex; align-items: baseline; gap: 12px; }
+  .note h3 small { font-family: var(--body); font-weight: 400; font-size: .85rem; text-transform: none; color: var(--muted); letter-spacing: 0; }
+  .note p { color: var(--ink-2); font-size: .97rem; }
+  .note ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: .93rem; color: var(--ink-2); }
+  .note li { padding-left: 16px; position: relative; }
+  .note li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 2px; background: var(--thread-2); }
+  .note .b { font-family: var(--cond); font-weight: 600; font-size: .92rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+  /* Process on bench photo */
+  .process { position: relative; background: var(--bench); color: var(--on-dark); overflow: hidden; }
+  .process-bg { position: absolute; inset: 0; }
+  .process-bg img { width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+  .process-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,19,15,.7), rgba(22,19,15,.9)); }
+  .process .wrap { position: relative; }
+  .process h2 { color: var(--on-dark); }
+  .process .lede { color: var(--on-dark-2); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: s; }
+  @media (min-width: 900px) { .steps { grid-template-columns: repeat(4, 1fr); gap: 16px; } }
+  .steps li { counter-increment: s; background: rgba(34,29,23,.85); border: 1px solid rgba(242,236,224,.12); padding: 22px 20px 24px; display: grid; gap: 10px; align-content: start; position: relative; }
+  .steps li::before { content: counter(s); font-family: var(--cond); font-weight: 800; font-size: 3rem; line-height: 1; color: var(--thread); }
+  .steps h3 { color: var(--on-dark); font-size: 1.5rem; }
+  .steps p { color: var(--on-dark-2); font-size: .95rem; }
+
+  /* Story */
+  .story .wrap { display: grid; gap: 32px; }
+  @media (min-width: 900px) { .story .wrap { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; } }
+  .story-photo { position: relative; background: var(--bench); margin: 0; }
+  .story-photo img { width: 100%; height: auto; }
+  .story-photo figcaption { position: absolute; left: 0; bottom: 0; background: var(--thread); color: var(--ink); font-family: var(--cond); font-weight: 700; font-size: .9rem; letter-spacing: .12em; text-transform: uppercase; padding: 8px 14px; }
+  .story-copy { display: grid; gap: 16px; color: var(--ink-2); }
+  .story-copy strong { color: var(--ink); font-weight: 600; }
+  .quote { font-family: var(--cond); font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.1; color: var(--oxblood); text-transform: uppercase; letter-spacing: .01em; border-left: 4px solid var(--thread); padding-left: 18px; }
+  .quote small { display: block; font-family: var(--body); font-weight: 500; font-size: .85rem; text-transform: none; color: var(--muted); margin-top: 10px; letter-spacing: 0; }
+  .gens { list-style: none; margin: 6px 0 0; padding: 0; display: grid; border-top: 2px solid var(--ink); }
+  .gens li { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: .95rem; align-items: baseline; }
+  .gens .y { font-family: var(--cond); font-weight: 800; font-size: 1.45rem; text-transform: uppercase; color: var(--ink); }
+  .gens .t { color: var(--ink-2); }
+
+  /* Brand wall */
+  .wall { background: var(--bench); color: var(--on-dark); }
+  .wall .tag { color: var(--thread); }
+  .wall-list { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 20px -6px 0; }
+  .wall-list span { font-family: var(--cond); font-weight: 800; text-transform: uppercase; font-size: clamp(1.7rem, 5.5vw, 3.6rem); line-height: 1; padding: 6px 12px; color: var(--on-dark); }
+  .wall-list span:nth-child(3n) { color: var(--on-dark-2); }
+  .wall-list span:nth-child(5n) { color: var(--thread); }
+  .wall .note { margin-top: 24px; color: var(--on-dark-2); max-width: 60ch; border: 0; padding: 0; }
+
+  /* Shop */
+  .shop-grid { display: grid; gap: 12px; }
+  @media (min-width: 640px) { .shop-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .shop-grid { grid-template-columns: repeat(4, 1fr); } }
+  .shop-card { background: var(--kraft-3); border: 1px solid var(--line); padding: 22px; display: grid; gap: 10px; align-content: start; }
+  .shop-logo { height: 60px; display: flex; align-items: center; }
+  .shop-logo img { max-height: 60px; width: auto; }
+  .shop-card .k { font-family: var(--cond); font-weight: 700; font-size: .85rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .shop-card h3 { font-size: 1.5rem; }
+  .shop-card p { color: var(--ink-2); font-size: .95rem; }
+  .shop-card .fine { color: var(--oxblood); font-weight: 600; font-size: .88rem; }
+
+  /* Visit */
+  .visit { background: var(--kraft-3); border-top: 2px solid var(--ink); }
+  .visit-grid { display: grid; gap: 14px; }
+  @media (min-width: 900px) { .visit-grid { grid-template-columns: 1.1fr 1fr; gap: 20px; } }
+  .vcard { background: var(--kraft); border: 1px solid var(--line); padding: 26px; display: grid; gap: 18px; align-content: start; }
+  .vcard h3 { font-size: 1.9rem; }
+  .addr { font-style: normal; color: var(--ink-2); line-height: 1.5; font-size: 1.05rem; }
+  .addr .lm { color: var(--muted); font-size: .92rem; display: block; margin-top: 4px; }
+  .contact-row { display: grid; gap: 10px; }
+  .contact-row a { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 1.05rem; }
+  .contact-row a svg { width: 18px; height: 18px; color: var(--oxblood); flex: none; }
+  .hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .hours th, .hours td { text-align: left; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .hours th { font-weight: 500; color: var(--ink-2); width: 46%; }
+  .hours td { font-family: var(--cond); font-weight: 700; font-size: 1.25rem; letter-spacing: .02em; }
+  .hours .closed { color: var(--muted); font-weight: 600; }
+  .hours tr:last-child th, .hours tr:last-child td { border-bottom: 0; }
+  .open-now { display: inline-flex; align-items: center; gap: 8px; font-family: var(--cond); font-weight: 700; font-size: .95rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+  .open-now i { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); display: inline-block; }
+  .open-now.is-open i { background: #2E8B57; }
+  .visit-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .ship { background: var(--bench); color: var(--on-dark); padding: 18px 20px; display: grid; gap: 6px; }
+  .ship b { font-family: var(--cond); font-weight: 800; text-transform: uppercase; font-size: 1.4rem; color: var(--thread); line-height: 1; }
+  .ship p { color: var(--on-dark-2); font-size: .95rem; }
+
+  /* Estimate */
+  .estimate .wrap { display: grid; gap: 28px; }
+  @media (min-width: 900px) { .estimate .wrap { grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; } }
+  .estimate .head { margin-bottom: 0; }
+  .form-grid { display: grid; gap: 14px; }
+  @media (min-width: 640px) { .form-grid { grid-template-columns: 1fr 1fr; } .form-grid .full { grid-column: 1 / -1; } }
+  .field { display: grid; gap: 6px; }
+  .field label { font-family: var(--cond); font-weight: 700; font-size: .95rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+  .field input, .field select, .field textarea { width: 100%; font: 400 1rem var(--body); color: var(--ink); background: var(--kraft-3); border: 1.5px solid var(--line); padding: 12px 14px; min-height: 50px; border-radius: 0; }
+  .field textarea { min-height: 130px; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: 3px solid var(--thread); outline-offset: 0; border-color: var(--ink); }
+  .form-foot { display: grid; gap: 12px; margin-top: 18px; }
+  .form-foot .fine { color: var(--muted); font-size: .88rem; max-width: 60ch; }
+  .form-status { display: none; background: var(--kraft-3); border-left: 4px solid var(--thread); padding: 12px 14px; font-size: .95rem; }
+  .form-status.show { display: block; }
+
+  /* Footer */
+  footer.site { background: var(--bench); color: var(--on-dark-2); padding-block: 44px 30px; font-size: .92rem; }
+  footer .wrap { display: grid; gap: 26px; }
+  @media (min-width: 900px) { footer .wrap { grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; } }
+  footer h4 { font-size: .85rem; letter-spacing: .18em; color: var(--thread); margin: 0 0 12px; font-weight: 700; }
+  footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  footer a { color: var(--on-dark); text-decoration: none; }
+  footer a:hover { color: var(--thread); }
+  .foot-brand { display: grid; gap: 10px; max-width: 42ch; }
+  .foot-brand .brand-name { color: var(--on-dark); }
+  .foot-bottom { grid-column: 1 / -1; border-top: 1px solid rgba(242,236,224,.12); padding-top: 18px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: .82rem; }
+
+  /* Mobile action bar */
+  .actionbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: var(--bench); border-top: 2px solid var(--thread); padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)); display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px; }
+  .actionbar a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; text-decoration: none; color: var(--on-dark); font-family: var(--cond); font-weight: 700; font-size: 1.05rem; letter-spacing: .08em; text-transform: uppercase; border: 1.5px solid rgba(242,236,224,.3); }
+  .actionbar a svg { width: 18px; height: 18px; }
+  .actionbar a.primary { background: var(--oxblood); border-color: var(--oxblood); color: #fff; }
+  @media (min-width: 900px) { .actionbar { display: none; } }
+</style>
+
+<div class="strip">
+  <div class="wrap">
+    <span><b>Est. 1988</b> · Paradise Valley</span>
+    <span class="hide-m">Mon–Fri 8:30–5 · Sat 9–3</span>
+    <span class="hide-m">Free estimates</span>
+    <span><b>602-953-1266</b></span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Cobbler's Den home">
+      <span class="brand-name">Cobbler's Den</span>
+      <span class="brand-sub">Shoe &amp; Luggage Repair</span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <ul>
+        <li><a href="#repairs">Repairs</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#story">Our story</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-ox hdr-call" href="tel:+16029531266">Call 602-953-1266</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+    </button>
+  </div>
+  <div class="drawer" id="drawer">
+    <ul>
+      <li><a href="#repairs">Repairs</a></li>
+      <li><a href="#process">How it works</a></li>
+      <li><a href="#story">Our story</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#visit">Hours &amp; directions</a></li>
+      <li><a href="#estimate">Free estimate</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-img" aria-hidden="true"><img src="{{HERO}}" alt="" width="1400" height="2098" fetchpriority="high"></div>
+    <div class="wrap">
+      <span class="tag">Quality Shoe &amp; Luggage Repair · Phoenix · Paradise Valley Mall</span>
+      <h1>We fix what you'd rather <span>not replace.</span></h1>
+      <p class="lede">Fine shoes, boots, handbags and luggage, repaired at our own bench with the best materials we can buy. Free estimate, no surprises, all work guaranteed.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-ox" href="#estimate">Get a free estimate</a>
+        <a class="btn btn-out-light" href="#visit">Hours &amp; directions</a>
+      </div>
+      <div class="hero-facts">
+        <div><b>1988</b><span>Est. Phoenix</span></div>
+        <div><b>~1 wk</b><span>Most repairs</span></div>
+        <div><b>US+CA</b><span>Mail-in service</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="awards" aria-label="Awards">
+    <div class="wrap">
+      <div class="award-imgs">
+        <img src="{{AWARD2012}}" alt="Best of Scottsdale 2012, Boot & Shoe Repair" width="150" height="184">
+        <img src="{{AWARD2013}}" alt="Best of Scottsdale 2013, Boot & Shoe Repair" width="150" height="184">
+        <img src="{{AWARD2015}}" alt="Best of Scottsdale 2015, Boot & Shoe Repair" width="245" height="300">
+      </div>
+      <div class="award-text">
+        <b>Three-time "Best of Scottsdale"</b>
+        <span>Boot &amp; Shoe Repair — 2012, 2013 and 2015</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="repairs">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">What we repair</span>
+        <h2>Bring it in before you throw it away.</h2>
+        <p class="lede">All brands. Specialists in the fine ones. Fourteen trades under one roof, from a resole to a full color change, a new lining, zipper, or wheels for your luggage. And so much more!</p>
+      </div>
+      <div class="cats">
+        <a class="cat" href="#n-shoes">
+          <img src="{{SHOES}}" alt="Brown leather brogues on a wooden bench" width="1000" height="750" loading="lazy">
+          <div class="cat-body"><h3>Shoes</h3><p>Resole, heels, refinish, dye, shine. Thin Italian leather that feels broken-in day one.</p><span class="more">See what's included</span></div>
+        </a>
+        <a class="cat" href="#n-boots">
+          <img src="{{BOOTS}}" alt="A wall of western boots on shelves" width="1000" height="750" loading="lazy">
+          <div class="cat-body"><h3>Boots</h3><p>Western, work and dress. Stitches picked, shanks set, brass tacks driven.</p><span class="more">See what's included</span></div>
+        </a>
+        <a class="cat" href="#n-bags">
+          <img src="{{BAGS}}" alt="A cognac leather handbag" width="1000" height="750" loading="lazy">
+          <div class="cat-body"><h3>Handbags</h3><p>Straps, corners, linings, hardware. Refinish or recolor entirely — any skin.</p><span class="more">See what's included</span></div>
+        </a>
+        <a class="cat" href="#n-luggage">
+          <img src="{{LUGGAGE}}" alt="An aluminium suitcase" width="1000" height="750" loading="lazy">
+          <div class="cat-body"><h3>Luggage</h3><p>Wheels, pull handles, zippers, a single screw. Parts in stock.</p><span class="more">See what's included</span></div>
+        </a>
+        <a class="cat" href="#n-leather">
+          <img src="{{LEATHER}}" alt="A brown leather belt with a steel buckle and a brown leather jacket on a wall hook" width="1000" height="750" loading="lazy">
+          <div class="cat-body"><h3>Belts &amp; jackets</h3><p>Custom belts in exotic skins. Jackets patched, re-paneled, recolored.</p><span class="more">See what's included</span></div>
+        </a>
+        <a class="cat" href="#n-care">
+          <img src="{{SHINE}}" alt="Horsehair brushes and polish tins laid out on a bench" width="1000" height="750" loading="lazy">
+          <div class="cat-body"><h3>Shine, orthopedic &amp; more</h3><p>Four-step hand shine, doctor's prescriptions, chemical-free sanitizing.</p><span class="more">See what's included</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="notes">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">Bench notes</span>
+        <h2>What's included.</h2>
+      </div>
+      <div class="notes-grid">
+        <div class="note" id="n-shoes">
+          <h3>Shoes <small>usually back within a week</small></h3>
+          <p>Good leather shoes are an investment. We buy thin, super-prime leather direct from tanners in Italy, so a resoled loafer feels broken-in the day you pick it up — not weighed down by a slab of leather.</p>
+          <ul>
+            <li>Full sole &amp; heels — super-prime leather, correct replacement heels, factory refinish</li>
+            <li>Half soles &amp; heels — same materials, forefoot only</li>
+            <li>Combination — leather sole with rubber forefoot insert for traction</li>
+            <li>Flex leather — for thin-soled premium brands</li>
+            <li>Heels — rubber, or combination with a rubber plug</li>
+            <li>Sole savers — thin rubber half-sole to protect a new outsole</li>
+            <li>Custom-mixed dye to match a dress or swatch — fabric or leather</li>
+            <li>Four-step hand shine: clean, strip old wax, condition, seal and brush</li>
+          </ul>
+          <span class="b">Allen Edmonds · Ferragamo · Santoni · Cole Haan · Bally · Johnston &amp; Murphy · Bruno Magli · Mezlan</span>
+        </div>
+        <div class="note" id="n-boots">
+          <h3>Boots</h3>
+          <p>We learned from a custom bootmaker with more than twenty years at the bench. Western, work and dress boots, treated according to the skin.</p>
+          <ul>
+            <li>Stitches picked, shanks set, brass tacks driven</li>
+            <li>Super-prime leather soles and heels</li>
+            <li>Uppers conditioned and refinished to the skin</li>
+          </ul>
+          <span class="b">Lucchese · Justin · Tony Lama · Dan Post · Old Gringo</span>
+        </div>
+        <div class="note" id="n-bags">
+          <h3>Handbags</h3>
+          <p>Repair, refinish or change the color entirely. Any leather, any skin — including alligator and croc re-glazing.</p>
+          <ul>
+            <li>Broken straps, worn corners, tears, new linings</li>
+            <li>Refinish: clean, condition, color-match, then water and stain protection</li>
+            <li>Full color change</li>
+            <li>Zippers, sliders and hardware</li>
+          </ul>
+          <span class="b">Chanel · Louis Vuitton · Gucci · Prada · Fendi · Coach · Dooney &amp; Bourke</span>
+        </div>
+        <div class="note" id="n-luggage">
+          <h3>Luggage</h3>
+          <p>We stock the parts — from a single screw to full wheel and telescoping-handle sets. Bring it in before you throw it away.</p>
+          <ul>
+            <li>Wheel and pull-handle replacement</li>
+            <li>Zipper sliders and full zippers</li>
+            <li>Corners, panels and stitching</li>
+          </ul>
+          <span class="b">Tumi · Samsonite · Hartmann · Travelpro · Swiss Army</span>
+        </div>
+        <div class="note" id="n-leather">
+          <h3>Belts &amp; leather jackets</h3>
+          <p>Remo Tulliani belts in stock, or a custom belt made to order in lizard, ostrich, snake, stingray and other exotic skins as available.</p>
+          <ul>
+            <li>Belts resized or refinished to look new</li>
+            <li>Jacket rips and holes — permanent repair compound, hard to spot</li>
+            <li>Larger damage — new panel sewn in and recolored to match</li>
+            <li>Stain protection and full recoloring</li>
+          </ul>
+          <span class="b">Casual, dress, full-length and motorcycle leather</span>
+        </div>
+        <div class="note" id="n-care">
+          <h3>Orthopedic, sanitizing &amp; custom</h3>
+          <p>We fill doctor's orthopedic prescriptions, run a chemical-free Klenz silver-oxide sanitizer, and take on the projects that don't fit a category.</p>
+          <ul>
+            <li>Heel build-ups, full-sole add-ons, arch supports, heel levelling</li>
+            <li>Sanitizing for shoes, golf shoes, handbags, gloves — kills odor and mold</li>
+            <li>Custom leather work, evaluated and quoted free</li>
+          </ul>
+          <span class="b">Bring the shoes and the prescription</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div class="process-bg" aria-hidden="true"><img src="{{BENCH}}" alt="" width="1400" height="787" loading="lazy"></div>
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">How it works</span>
+        <h2>No surprises at the counter.</h2>
+        <p class="lede">We explain the job and the price options before anything is touched — what gets repaired, how, why and how much.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Bring it in, or ship it</h3><p>Walk in during shop hours, or call for packing instructions and mail it from anywhere in the US or Canada.</p></li>
+        <li><h3>Free estimate</h3><p>We look it over, walk you through the options, and give you a price. No charge for the look.</p></li>
+        <li><h3>The repair</h3><p>Done at our bench with the best materials available. Most jobs are back within a week.</p></li>
+        <li><h3>Guaranteed</h3><p>Every job is guaranteed for workmanship and materials. If it isn't right, bring it back.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap">
+      <figure class="story-photo stitch">
+        <img src="{{STORY}}" alt="Chris at the Cobbler's Den counter, handing a repaired suitcase to a customer" width="1200" height="632" loading="lazy">
+        <figcaption>Two generations at the bench</figcaption>
+      </figure>
+      <div>
+        <div class="head">
+          <span class="tag">Our story</span>
+          <h2>Chicago to Phoenix.</h2>
+        </div>
+        <div class="story-copy">
+          <p>Cobbler's Den was founded by <strong>Mack</strong>, a cobbler from Chicago who moved to the Scottsdale–Phoenix area with his wife and children and built a reputation for quality and service.</p>
+          <p>He ran a very successful shop on Camelback near the Biltmore for more than fifteen years, sold it in 2003, and opened Cobbler's Den on Tatum just north of Cactus — where we've been ever since.</p>
+          <p>His son <strong>Chris</strong> now runs the day-to-day and holds to the standards his father set.</p>
+          <blockquote class="quote">"You'll know exactly what will be repaired, how, why, and how much."<small>— Chris, Owner</small></blockquote>
+          <ol class="gens">
+            <li><span class="y">Chicago</span><span class="t">Mack learns the trade — where it all begins</span></li>
+            <li><span class="y">1988</span><span class="t">Mack opens on Camelback near the Biltmore</span></li>
+            <li><span class="y">2003</span><span class="t">Cobbler's Den opens across from Paradise Valley Mall</span></li>
+            <li><span class="y">Today</span><span class="t">Chris at the counter — same bench, same guarantee</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wall grain" aria-label="Brands we service">
+    <div class="wrap">
+      <span class="tag">Across our counter every week</span>
+      <div class="wall-list">
+        <span>Allen Edmonds</span><span>Chanel</span><span>Tumi</span><span>Louis Vuitton</span><span>Lucchese</span><span>Ferragamo</span><span>Samsonite</span><span>Gucci</span><span>Birkenstock</span><span>Prada</span><span>Hartmann</span><span>Coach</span><span>Cole Haan</span><span>Travelpro</span><span>Fendi</span><span>Tony Lama</span><span>Dooney &amp; Bourke</span><span>Swiss Army</span><span>Justin</span>
+      </div>
+      <p class="note">Not on the wall? Bring it in anyway. We work on every brand, and the estimate is free either way.</p>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">In the shop</span>
+        <h2>A few things we sell, not just fix.</h2>
+      </div>
+      <div class="shop-grid">
+        <div class="shop-card">
+          <div class="shop-logo"><img src="{{LOGO_MP}}" alt="Moda in Pelle, M&R Firenze" width="280" height="211"></div>
+          <span class="k">Handbags</span><h3>Moda in Pelle</h3>
+          <p>Hand-crafted M&amp;R Firenze Italian leather handbags — a whole wall to choose from.</p>
+          <p class="fine">Made in Italy</p>
+        </div>
+        <div class="shop-card">
+          <div class="shop-logo"><img src="{{LOGO_TC}}" alt="Traveler's Choice" width="249" height="105"></div>
+          <span class="k">Luggage</span><h3>Traveler's Choice</h3>
+          <p>Quality travelware for frequent flyers and once-a-year vacationers alike.</p>
+          <p class="fine">We service what we sell</p>
+        </div>
+        <div class="shop-card">
+          <div class="shop-logo"><img src="{{LOGO_SPENCO}}" alt="Spenco" width="210" height="89"></div>
+          <span class="k">Footwear</span><h3>Spenco sandals</h3>
+          <p>Several styles of the most comfortable sandal we've found.</p>
+          <p class="fine">Your feet will thank you</p>
+        </div>
+        <div class="shop-card">
+          <div class="shop-logo"><img src="{{LOGO_REMO}}" alt="Remo Tulliani" width="279" height="58"></div>
+          <span class="k">Belts</span><h3>Remo Tulliani</h3>
+          <p>Eighteen styles of fine Italian leather belts.</p>
+          <p class="fine">Custom sized at no extra charge</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">Visit</span>
+        <h2>Come in, or ship it to us.</h2>
+      </div>
+      <div class="visit-grid">
+        <div class="vcard">
+          <h3>Paradise Valley</h3>
+          <address class="addr">
+            12871 N. Tatum Blvd<br>Phoenix, AZ 85032
+            <span class="lm">Tatum just north of Cactus · next to EōS Fitness · across from Paradise Valley Mall</span>
+          </address>
+          <div class="contact-row">
+            <a href="tel:+16029531266"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>602-953-1266</a>
+            <a href="mailto:contactus@cobblersdenaz.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>contactus@cobblersdenaz.com</a>
+          </div>
+          <div class="visit-actions">
+            <a class="btn btn-ox" href="https://www.google.com/maps/dir/?api=1&destination=12871+N+Tatum+Blvd,+Phoenix,+AZ+85032" target="_blank" rel="noopener">Get directions</a>
+            <a class="btn btn-out-dark" href="tel:+16029531266">Call the shop</a>
+          </div>
+        </div>
+        <div class="vcard">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <h3>Hours</h3>
+            <span class="open-now" id="openNow"><i></i><span>Checking…</span></span>
+          </div>
+          <table class="hours">
+            <tbody>
+              <tr><th scope="row">Monday – Friday</th><td>8:30 – 5:00</td></tr>
+              <tr><th scope="row">Saturday</th><td>9:00 – 3:00</td></tr>
+              <tr><th scope="row">Sunday</th><td class="closed">Closed</td></tr>
+            </tbody>
+          </table>
+          <div class="ship">
+            <b>Not in Phoenix?</b>
+            <p>We repair by mail across the United States and Canada. Call or email for a quote and packing instructions, then ship to the address at left.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="estimate" id="estimate">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">Free estimate</span>
+        <h2>Tell us what needs fixing.</h2>
+        <p class="lede">Describe the item and the problem. We'll reply with a quote and, if you're shipping to us, how to pack it. Photos help — attach them to the email.</p>
+      </div>
+      <form id="estimateForm" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="f-contact">Phone or email</label><input id="f-contact" name="contact" type="text" autocomplete="tel" required></div>
+          <div class="field">
+            <label for="f-item">What is it?</label>
+            <select id="f-item" name="item" required>
+              <option value="">Choose one</option>
+              <option>Shoes</option><option>Boots</option><option>Handbag</option><option>Luggage</option><option>Belt</option><option>Leather jacket</option><option>Something else</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-brand">Brand (if known)</label><input id="f-brand" name="brand" type="text" placeholder="Allen Edmonds, Tumi, Coach…"></div>
+          <div class="field full"><label for="f-desc">What's wrong with it?</label><textarea id="f-desc" name="description" placeholder="Worn heels, broken strap, stuck zipper, wants a new color…" required></textarea></div>
+          <div class="field full">
+            <label for="f-how">How will we get it?</label>
+            <select id="f-how" name="delivery"><option>I'll bring it into the shop</option><option>I'll ship it (US or Canada)</option></select>
+          </div>
+        </div>
+        <div class="form-foot">
+          <div class="form-status" id="formStatus" role="status"></div>
+          <div><button class="btn btn-ox" type="submit">Send estimate request</button></div>
+          <p class="fine">This opens a pre-filled email to contactus@cobblersdenaz.com in your own mail app. Prefer to talk? Call <a href="tel:+16029531266">602-953-1266</a> during shop hours.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site grain">
+  <div class="wrap">
+    <div class="foot-brand">
+      <span class="brand-name">Cobbler's Den</span>
+      <p>Shoe &amp; luggage repair in Paradise Valley, Phoenix. Family-run since 1988, three-time "Best of Scottsdale" winner. All brands — specialists in fine shoes and handbags.</p>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <ul>
+        <li>12871 N. Tatum Blvd, Phoenix, AZ 85032</li>
+        <li><a href="tel:+16029531266">602-953-1266</a></li>
+        <li><a href="mailto:contactus@cobblersdenaz.com">contactus@cobblersdenaz.com</a></li>
+        <li>Mon–Fri 8:30–5 · Sat 9–3 · Sun closed</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Site</h4>
+      <ul>
+        <li><a href="#repairs">Repairs</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#story">Our story</a></li>
+        <li><a href="#shop">In the shop</a></li>
+        <li><a href="#estimate">Free estimate</a></li>
+      </ul>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Cobbler's Den Shoe &amp; Luggage Repair</span>
+      <span>Website by AZ Tech Geeks</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Quick actions">
+  <a href="tel:+16029531266"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=12871+N+Tatum+Blvd,+Phoenix,+AZ+85032" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Directions</a>
+  <a class="primary" href="#estimate">Free estimate</a>
+</nav>
+
+<script>
+  (function () {
+    var btn = document.getElementById('menuBtn'), drawer = document.getElementById('drawer');
+    if (!btn || !drawer) return;
+    btn.addEventListener('click', function () {
+      var open = drawer.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    drawer.addEventListener('click', function (e) { if (e.target.tagName === 'A') { drawer.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
+  })();
+
+  (function () {
+    var el = document.getElementById('openNow'); if (!el) return;
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Phoenix', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date());
+      var get = function (t) { var p = parts.find(function (x) { return x.type === t; }); return p ? p.value : ''; };
+      var day = get('weekday'), mins = (parseInt(get('hour'), 10) % 24) * 60 + parseInt(get('minute'), 10);
+      var open = false, label;
+      if (day === 'Sat') { open = mins >= 540 && mins < 900; label = open ? 'Open now · closes 3:00 pm' : (mins < 540 ? 'Opens 9:00 am' : 'Closed · opens Mon 8:30 am'); }
+      else if (day === 'Sun') { label = 'Closed Sundays · opens Mon 8:30 am'; }
+      else { open = mins >= 510 && mins < 1020; label = open ? 'Open now · closes 5:00 pm' : (mins < 510 ? 'Opens 8:30 am' : (day === 'Fri' ? 'Closed · opens Sat 9:00 am' : 'Closed · opens 8:30 am')); }
+      el.classList.toggle('is-open', open);
+      el.querySelector('span').textContent = label;
+    } catch (e) { el.querySelector('span').textContent = 'See hours below'; }
+  })();
+
+  (function () {
+    var form = document.getElementById('estimateForm'), status = document.getElementById('formStatus');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = form.elements;
+      var missing = ['name', 'contact', 'item', 'description'].filter(function (n) { return !f[n].value.trim(); });
+      if (missing.length) { status.textContent = 'Please fill in your name, how to reach you, what the item is, and what\'s wrong with it.'; status.classList.add('show'); f[missing[0]].focus(); return; }
+      var subject = 'Estimate request: ' + f.item.value + (f.brand.value ? ' (' + f.brand.value.trim() + ')' : '');
+      var body = ['Name: ' + f.name.value.trim(), 'Contact: ' + f.contact.value.trim(), 'Item: ' + f.item.value, 'Brand: ' + (f.brand.value.trim() || 'Not sure'), 'Delivery: ' + f.delivery.value, '', 'What\'s wrong:', f.description.value.trim(), '', '(Photos attached below, if any)'].join('\n');
+      window.location.href = 'mailto:contactus@cobblersdenaz.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      status.textContent = 'Opening your email app with the request filled in. If nothing opens, email contactus@cobblersdenaz.com or call 602-953-1266.';
+      status.classList.add('show');
+    });
+  })();
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>

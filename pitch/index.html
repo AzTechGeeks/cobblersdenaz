@@ -1,0 +1,287 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cobbler's Den Redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;600&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0b0d12;
+    --surface: #14171f;
+    --surface-2: #1b1f29;
+    --hairline: #262b36;
+    --text: #edeef2;
+    --muted: #9299aa;
+    --mint: #00ff41;
+    --mint-dim: #125c26;
+    --glow-mint: 0 0 10px var(--mint), 0 0 20px var(--mint), 0 0 40px var(--mint);
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; color: var(--text); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+    background: radial-gradient(circle at 15% 10%, rgba(0,255,65,.10), transparent 28%), radial-gradient(circle at 85% 18%, rgba(0,212,255,.10), transparent 30%), radial-gradient(circle at 50% 100%, rgba(255,107,0,.07), transparent 34%), var(--bg);
+  }
+  img { max-width: 100%; display: block; height: auto; }
+  a { color: var(--mint); }
+  :focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+  h1 { font-size: clamp(2.4rem, 6.5vw, 4.4rem); }
+  h2 { font-size: clamp(1.9rem, 4.5vw, 2.9rem); }
+  h3 { font-size: 1.25rem; }
+  p { margin: 0; }
+  .wrap { width: 100%; max-width: 1080px; margin-inline: auto; padding-inline: 20px; }
+  @media (min-width: 640px) { .wrap { padding-inline: 32px; } }
+  section { padding-block: 64px; }
+  @media (min-width: 900px) { section { padding-block: 80px; } }
+  .eyebrow { font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mint); text-shadow: 0 0 12px rgba(0,255,65,.45); }
+  .lede { color: var(--muted); font-size: 1.12rem; max-width: 62ch; }
+  .head { display: grid; gap: 14px; margin-bottom: 36px; max-width: 70ch; }
+
+  /* Cover */
+  .cover { padding-block: 96px 0; border-bottom: 1px solid var(--hairline); }
+  .cover .wrap { display: grid; gap: 22px; }
+  .cover h1 { max-width: 16ch; }
+  .cover .lede { font-size: 1.2rem; color: var(--text); opacity: .85; }
+  .meta { margin-top: 40px; border-top: 1px solid var(--hairline); display: grid; }
+  @media (min-width: 720px) { .meta { grid-template-columns: repeat(4, 1fr); } }
+  .meta div { padding: 18px 0; border-bottom: 1px solid var(--hairline); display: grid; gap: 4px; }
+  @media (min-width: 720px) { .meta div { border-bottom: 0; border-right: 1px solid var(--hairline); padding: 22px 18px 22px 0; margin-right: 18px; } .meta div:last-child { border-right: 0; } }
+  .meta dt { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .meta dd { margin: 0; font-size: .95rem; color: var(--text); overflow-wrap: anywhere; }
+  .meta dd a { color: var(--mint); text-decoration: none; }
+  .meta dd a:hover { text-decoration: underline; }
+
+  /* Brief */
+  .cols { display: grid; gap: 18px; }
+  @media (min-width: 800px) { .cols { grid-template-columns: 1fr 1fr; gap: 24px; } }
+  .panel { background: var(--surface); border: 1px solid var(--hairline); padding: 26px; display: grid; gap: 14px; align-content: start; }
+  .panel h3 { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-weight: 600; font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; }
+  .panel.before h3 { color: var(--muted); }
+  .panel.after h3 { color: var(--mint); }
+  .panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .panel li { padding-left: 22px; position: relative; color: var(--text); font-size: .97rem; }
+  .panel.before li { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(146,153,170,.6); }
+  .panel.before li::before { content: "×"; position: absolute; left: 0; color: var(--muted); font-family: var(--mono); }
+  .panel.after li::before { content: "✓"; position: absolute; left: 0; color: var(--mint); font-family: var(--mono); }
+
+  /* Stat strip */
+  .stats { padding-block: 0; }
+  .stats .wrap { border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 720px) { .stats .wrap { grid-template-columns: repeat(5, 1fr); } }
+  .stat { padding: 26px 16px; display: grid; gap: 4px; border-right: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .stat:nth-child(2n) { border-right: 0; }
+  @media (min-width: 720px) { .stat { border-bottom: 0; border-right: 1px solid var(--hairline); padding: 32px 20px; } .stat:nth-child(2n) { border-right: 1px solid var(--hairline); } .stat:last-child { border-right: 0; } }
+  .stat b { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 4.5vw, 2.8rem); line-height: 1; color: var(--mint); text-shadow: 0 0 14px rgba(0,255,65,.35); font-variant-numeric: tabular-nums; }
+  .stat span { font-family: var(--mono); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+  /* Pillars */
+  .pillars { display: grid; gap: 16px; }
+  @media (min-width: 720px) { .pillars { grid-template-columns: repeat(2, 1fr); } }
+  .pillar { background: var(--surface); border: 1px solid var(--hairline); padding: 26px; display: grid; gap: 10px; align-content: start; }
+  .pillar .n { font-family: var(--mono); font-size: .74rem; letter-spacing: .12em; color: var(--mint); }
+  .pillar p { color: var(--muted); font-size: .97rem; }
+
+  /* Proof */
+  .device { border: 1px solid var(--hairline); background: var(--surface-2); box-shadow: 0 30px 80px -30px rgba(0,0,0,.8); overflow: hidden; }
+  .chrome { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--hairline); background: var(--surface); }
+  .dots { display: flex; gap: 6px; }
+  .dots i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+  .dots i:nth-child(1) { background: #ff5f57; } .dots i:nth-child(2) { background: #febc2e; } .dots i:nth-child(3) { background: #28c840; }
+  .urlbar { flex: 1; font-family: var(--mono); font-size: .76rem; color: var(--muted); background: var(--bg); border: 1px solid var(--hairline); padding: 6px 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* --- Faithful mini recreation of the Cobbler's Den hero (client's own theme, not ours) --- */
+  .cd { --cd-bench: #16130F; --cd-kraft: #E8DFCF; --cd-ink: #1B1713; --cd-ox: #6E1E1E; --cd-thread: #D9A441; --cd-on: #F2ECE0; --cd-on2: #BFB4A2; font-family: 'Barlow', Arial, sans-serif; color: var(--cd-ink); background: var(--cd-kraft); }
+  .cd-strip { background: var(--cd-bench); color: var(--cd-on2); font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 700; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; display: flex; justify-content: center; gap: 18px; padding: 6px 12px; white-space: nowrap; overflow: hidden; }
+  .cd-strip b { color: var(--cd-thread); }
+  .cd-hdr { display: flex; justify-content: space-between; align-items: center; padding: 10px 18px; border-bottom: 2px solid var(--cd-ink); gap: 12px; }
+  .cd-brand { display: grid; line-height: 1; }
+  .cd-brand b { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.15rem; text-transform: uppercase; letter-spacing: .02em; }
+  .cd-brand span { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: .5rem; letter-spacing: .22em; text-transform: uppercase; color: var(--cd-ox); margin-top: 2px; }
+  .cd-nav { display: none; gap: 14px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
+  @media (min-width: 640px) { .cd-nav { display: flex; } }
+  .cd-call { background: var(--cd-ox); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; padding: 8px 12px; white-space: nowrap; }
+  .cd-hero { position: relative; background: var(--cd-bench); color: var(--cd-on); min-height: 380px; overflow: hidden; }
+  .cd-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  .cd-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,19,15,.35) 0%, rgba(22,19,15,.55) 45%, rgba(22,19,15,.92) 100%); }
+  @media (min-width: 640px) { .cd-hero::after { background: linear-gradient(90deg, rgba(22,19,15,.92) 0%, rgba(22,19,15,.72) 45%, rgba(22,19,15,.25) 100%); } }
+  .cd-hero-in { position: relative; z-index: 1; padding: 44px 18px 26px; display: grid; gap: 12px; align-content: end; min-height: 380px; }
+  @media (min-width: 640px) { .cd-hero-in { padding: 56px 28px 32px; max-width: 520px; } }
+  .cd-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--cd-thread); }
+  .cd-tag::before { content: ""; display: inline-block; width: 16px; height: 2px; background: var(--cd-thread); vertical-align: middle; margin-right: 8px; }
+  .cd-h1 { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 800; text-transform: uppercase; line-height: .92; font-size: clamp(2rem, 6vw, 3.2rem); color: var(--cd-on); margin: 0; }
+  .cd-h1 span { color: var(--cd-thread); }
+  .cd-lede { font-size: .82rem; color: var(--cd-on2); max-width: 44ch; line-height: 1.45; }
+  .cd-ctas { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .cd-btn { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; padding: 10px 16px; border: 2px solid transparent; white-space: nowrap; }
+  .cd-btn.ox { background: var(--cd-ox); border-color: var(--cd-ox); color: #fff; }
+  .cd-btn.out { border-color: rgba(242,236,224,.5); color: var(--cd-on); }
+  .cd-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; padding-top: 12px; border-top: 1px solid rgba(242,236,224,.2); }
+  .cd-facts b { display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.3rem; line-height: 1; color: var(--cd-on); }
+  .cd-facts span { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: .58rem; letter-spacing: .04em; text-transform: uppercase; color: var(--cd-on2); }
+  .cd-actionbar { background: var(--cd-bench); border-top: 2px solid var(--cd-thread); padding: 8px; display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 6px; }
+  @media (min-width: 640px) { .cd-actionbar { display: none; } }
+  .cd-actionbar span { display: flex; align-items: center; justify-content: center; min-height: 38px; color: var(--cd-on); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; border: 1.5px solid rgba(242,236,224,.3); }
+  .cd-actionbar span.p { background: var(--cd-ox); border-color: var(--cd-ox); color: #fff; }
+  .proof-cap { margin-top: 14px; font-family: var(--mono); font-size: .76rem; color: var(--muted); }
+
+  /* Close */
+  .close { text-align: center; }
+  .close .wrap { display: grid; gap: 18px; justify-items: center; }
+  .cta { display: inline-flex; align-items: center; gap: 10px; background: var(--mint); color: #05140a; font-family: var(--mono); font-weight: 600; font-size: .9rem; letter-spacing: .06em; text-transform: uppercase; padding: 14px 24px; text-decoration: none; box-shadow: 0 0 18px rgba(0,255,65,.35); }
+  .cta:hover { box-shadow: var(--glow-mint); color: #05140a; }
+  .close small { color: var(--muted); font-size: .9rem; max-width: 56ch; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--hairline); padding: 32px 0 40px; }
+  .footer-inner { display: grid; gap: 16px; align-items: center; }
+  @media (min-width: 720px) { .footer-inner { grid-template-columns: auto 1fr auto; gap: 28px; } }
+  .footer-inner img { width: 56px; height: auto; }
+  .foot-text { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: grid; gap: 6px; }
+  .foot-text a { color: var(--text); text-decoration: none; }
+  .foot-text a:hover { color: var(--mint); }
+  .social { display: flex; gap: 14px; font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+  .social a { color: var(--muted); text-decoration: none; }
+  .social a:hover { color: var(--mint); }
+</style>
+
+<section class="cover">
+  <div class="wrap">
+    <span class="eyebrow">Website Redesign — Delivered</span>
+    <h1>The shop finally looks like the work it does.</h1>
+    <p class="lede">Your current site is a 2000s desktop page shrunk onto a phone. The new one is built phone-first, photo-led, and gets a customer from "my heel broke" to your front door in two taps.</p>
+    <dl class="meta">
+      <div><dt>Client</dt><dd>Cobbler's Den Shoe &amp; Luggage Repair</dd></div>
+      <div><dt>Platform</dt><dd>Single static HTML file</dd></div>
+      <div><dt>Preview</dt><dd><a href="https://claude.ai/artifact/23f1KznrS8mfVQt2j8bWiL" target="_blank" rel="noopener">claude.ai/artifact/23f1Kz…</a></dd></div>
+      <div><dt>Status</dt><dd>Awaiting Client's Approval</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">The brief</span>
+      <h2>Same business, same content, a site that works on the device your customers actually use.</h2>
+      <p class="lede">Nothing was invented. Every service, brand, award and line of your story came from cobblersdenaz.com — cleaned up, de-duplicated, and put where a phone user can reach it.</p>
+    </div>
+    <div class="cols">
+      <div class="panel before">
+        <h3>Before — cobblersdenaz.com today</h3>
+        <ul>
+          <li>Fixed ~800px table layout, no viewport tag — phones get the desktop page shrunk to unreadable</li>
+          <li>Headers and nav are images, not text — invisible to search</li>
+          <li>Two different sets of hours on two pages (Home vs. About)</li>
+          <li>"Next to Sports Authority" — closed in 2016</li>
+          <li>"Locations in Scottsdale and Phoenix" — Scottsdale is closed</li>
+          <li>Product photos ≤ 100px thumbnails</li>
+          <li>Same 14-service list repeated as a sidebar on every page</li>
+          <li>No way to call or get directions with one tap</li>
+        </ul>
+      </div>
+      <div class="panel after">
+        <h3>After — the redesign</h3>
+        <ul>
+          <li>Mobile-first single page; every layout tested at phone width</li>
+          <li>Sticky Call · Directions · Free Estimate bar on phones</li>
+          <li>Six photo-led repair categories — shoes, boots, handbags, luggage, belts &amp; jackets, care — with all 14 trades detailed in "Bench notes"</li>
+          <li>One address, one set of hours, live "Open now" indicator on Phoenix time</li>
+          <li>Free-estimate form that opens a pre-filled email to your inbox</li>
+          <li>Your three "Best of Scottsdale" badges (2012 · 2013 · 2015) in a row up top, and four retail brand logos carried over</li>
+          <li>A frame from your own commercial as the story photo — "Two generations at the bench"</li>
+          <li>Fourteen rounds of your edits already in — copy, photos, layout — turned around the same day</li>
+          <li>Everything in one 1.3 MB file — nothing to update, patch or pay for monthly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats" aria-label="By the numbers">
+  <div class="wrap">
+    <div class="stat"><b>3 → 1</b><span>Pages</span></div>
+    <div class="stat"><b>14</b><span>Trades documented</span></div>
+    <div class="stat"><b>9</b><span>Photos embedded</span></div>
+    <div class="stat"><b>1</b><span>File to deploy</span></div>
+    <div class="stat"><b>14</b><span>Revisions, same day</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What changed</span>
+      <h2>Four things the old site couldn't do.</h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><span class="n">01</span><h3>Works on a phone</h3><p>Someone with a broken strap is searching on their phone, not a desktop. Layout, type size, tap targets and the bottom action bar are all designed at 390px first and scaled up — not the other way round.</p></div>
+      <div class="pillar"><span class="n">02</span><h3>Leads with the work</h3><p>Full-bleed photo of a cobbler at the last, six photo tiles for what you repair, your commercial's counter shot in the story. The old site had four thumbnails smaller than an app icon.</p></div>
+      <div class="pillar"><span class="n">03</span><h3>Says one true thing</h3><p>The hours conflict, the closed landmark, the closed second location and the "three generations" line are gone. Hours: Mon–Fri 8:30–5, Sat 9–3. Location: across from Paradise Valley Mall. Two generations at the bench. "We explain the job and the price options before anything is touched."</p></div>
+      <div class="pillar"><span class="n">04</span><h3>Costs nothing to run</h3><p>One HTML file with the photos, badges and logos embedded. No WordPress to update, no plugin to break, no hosting tier to upgrade. Drop it on any web host and it's live.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Proof</span>
+      <h2>The new homepage, as your customers will see it.</h2>
+    </div>
+    <div class="device">
+      <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="urlbar">cobblersdenaz.com</div></div>
+      <div class="cd">
+        <div class="cd-strip"><span><b>Est. 1988</b> · Paradise Valley</span><span>Mon–Fri 8:30–5 · Sat 9–3</span><span><b>602-953-1266</b></span></div>
+        <div class="cd-hdr">
+          <div class="cd-brand"><b>Cobbler's Den</b><span>Shoe &amp; Luggage Repair</span></div>
+          <div class="cd-nav"><span>Repairs</span><span>How it works</span><span>Our story</span><span>Shop</span><span>Visit</span></div>
+          <span class="cd-call">Call 602-953-1266</span>
+        </div>
+        <div class="cd-hero">
+          <img src="cd-hero.jpg" alt="" width="601" height="900">
+          <div class="cd-hero-in">
+            <span class="cd-tag">Quality Shoe &amp; Luggage Repair · Phoenix · Paradise Valley Mall</span>
+            <p class="cd-h1">We fix what you'd rather <span>not replace.</span></p>
+            <p class="cd-lede">Fine shoes, boots, handbags and luggage, repaired at our own bench with the best materials we can buy. Free estimate, no surprises, all work guaranteed.</p>
+            <div class="cd-ctas"><span class="cd-btn ox">Get a free estimate</span><span class="cd-btn out">Hours &amp; directions</span></div>
+            <div class="cd-facts"><div><b>1988</b><span>Est. Phoenix</span></div><div><b>~1 wk</b><span>Most repairs</span></div><div><b>US+CA</b><span>Mail-in service</span></div></div>
+          </div>
+        </div>
+        <div class="cd-actionbar"><span>Call</span><span>Directions</span><span class="p">Free estimate</span></div>
+      </div>
+    </div>
+    <p class="proof-cap">Recreated from the live preview. Narrow this window to see the phone layout with the bottom action bar.</p>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <span class="eyebrow">Next step</span>
+    <h2>Take a look on your phone.</h2>
+    <a class="cta" href="https://claude.ai/artifact/23f1KznrS8mfVQt2j8bWiL" target="_blank" rel="noopener">Open the preview →</a>
+    <small>When you're happy with it, we'll ship it live on cobblersdenaz.com. One file, one afternoon, no downtime for the old site until the new one is up.</small>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <img src="aztg-logo.png" alt="AZ Tech Geeks" width="256" height="243">
+    <div class="foot-text">
+      <span>© 2026 AZ Tech Geeks · Web &amp; App Dev · Sovereignty Consulting</span>
+      <a href="mailto:contactus@aztechgeeks.com">contactus@aztechgeeks.com</a>
+      <span>Built on your own terms</span>
+    </div>
+    <div class="social">
+      <a href="https://www.instagram.com/aztechgeeks/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/aztechgeeks" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://x.com/aztechgeeks" target="_blank" rel="noopener">X</a>
+      <a href="https://www.youtube.com/@aztechgeeks" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+</footer>
