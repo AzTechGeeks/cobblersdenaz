@@ -124,7 +124,7 @@
   .cd-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; padding-top: 12px; border-top: 1px solid rgba(242,236,224,.2); }
   .cd-facts b { display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.3rem; line-height: 1; color: var(--cd-on); }
   .cd-facts span { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: .58rem; letter-spacing: .04em; text-transform: uppercase; color: var(--cd-on2); }
-  .cd-actionbar { background: var(--cd-bench); border-top: 2px solid var(--cd-thread); padding: 8px; display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 6px; }
+  .cd-actionbar { background: var(--cd-bench); border-top: 2px solid var(--cd-thread); padding: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
   @media (min-width: 640px) { .cd-actionbar { display: none; } }
   .cd-actionbar span { display: flex; align-items: center; justify-content: center; min-height: 38px; color: var(--cd-on); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; border: 1.5px solid rgba(242,236,224,.3); }
   .cd-actionbar span.p { background: var(--cd-ox); border-color: var(--cd-ox); color: #fff; }
@@ -189,10 +189,10 @@
         <h3>After — the redesign</h3>
         <ul>
           <li>Mobile-first single page; every layout tested at phone width</li>
-          <li>Sticky Call · Directions · Free Estimate bar on phones</li>
+          <li>Sticky Call · Directions bar on phones — one tap to the shop</li>
           <li>Six photo-led repair categories — shoes, boots, handbags, luggage, belts &amp; jackets, care — with all 14 trades detailed in "Bench notes"</li>
           <li>One address, one set of hours, live "Open now" indicator on Phoenix time</li>
-          <li>Free-estimate form on the page — wired to your inbox once the site is live on your domain</li>
+          <li>No contact form — they go unused; every "estimate" button dials the shop instead</li>
           <li>Your three "Best of Scottsdale" badges (2012 · 2013 · 2015) in a row up top, and four retail brand logos carried over</li>
           <li>A frame from your own commercial as the story photo — "Two generations at the bench"</li>
           <li>Everything in one 1.3 MB file — nothing to update, patch or pay for monthly</li>
@@ -247,11 +247,11 @@
             <span class="cd-tag">Quality Shoe &amp; Luggage Repair · Phoenix · Paradise Valley Mall</span>
             <p class="cd-h1">We fix what you'd rather <span>not replace.</span></p>
             <p class="cd-lede">Fine shoes, boots, handbags and luggage, repaired at our own bench with the best materials we can buy. Free estimate, no surprises, all work guaranteed.</p>
-            <div class="cd-ctas"><span class="cd-btn ox">Get a free estimate</span><span class="cd-btn out">Hours &amp; directions</span></div>
+            <div class="cd-ctas"><span class="cd-btn ox">Call for a free estimate</span><span class="cd-btn out">Hours &amp; directions</span></div>
             <div class="cd-facts"><div><b>1988</b><span>Est. Phoenix</span></div><div><b>~1 wk</b><span>Most repairs</span></div><div><b>US+CA</b><span>Mail-in service</span></div></div>
           </div>
         </div>
-        <div class="cd-actionbar"><span>Call</span><span>Directions</span><span class="p">Free estimate</span></div>
+        <div class="cd-actionbar"><span class="p">Call</span><span>Directions</span></div>
       </div>
     </div>
     <p class="proof-cap">Recreated from the live preview. Narrow this window to see the phone layout with the bottom action bar.</p>

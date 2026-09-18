@@ -248,21 +248,6 @@
   .ship b { font-family: var(--cond); font-weight: 800; text-transform: uppercase; font-size: 1.4rem; color: var(--thread); line-height: 1; }
   .ship p { color: var(--on-dark-2); font-size: .95rem; }
 
-  /* Estimate */
-  .estimate .wrap { display: grid; gap: 28px; }
-  @media (min-width: 900px) { .estimate .wrap { grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; } }
-  .estimate .head { margin-bottom: 0; }
-  .form-grid { display: grid; gap: 14px; }
-  @media (min-width: 640px) { .form-grid { grid-template-columns: 1fr 1fr; } .form-grid .full { grid-column: 1 / -1; } }
-  .field { display: grid; gap: 6px; }
-  .field label { font-family: var(--cond); font-weight: 700; font-size: .95rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
-  .field input, .field select, .field textarea { width: 100%; font: 400 1rem var(--body); color: var(--ink); background: var(--kraft-3); border: 1.5px solid var(--line); padding: 12px 14px; min-height: 50px; border-radius: 0; }
-  .field textarea { min-height: 130px; resize: vertical; }
-  .field input:focus, .field select:focus, .field textarea:focus { outline: 3px solid var(--thread); outline-offset: 0; border-color: var(--ink); }
-  .form-foot { display: grid; gap: 12px; margin-top: 18px; }
-  .form-foot .fine { color: var(--muted); font-size: .88rem; max-width: 60ch; }
-  .form-status { display: none; background: var(--kraft-3); border-left: 4px solid var(--thread); padding: 12px 14px; font-size: .95rem; }
-  .form-status.show { display: block; }
 
   /* Footer */
   footer.site { background: var(--bench); color: var(--on-dark-2); padding-block: 44px 30px; font-size: .92rem; }
@@ -277,7 +262,7 @@
   .foot-bottom { grid-column: 1 / -1; border-top: 1px solid rgba(242,236,224,.12); padding-top: 18px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: .82rem; }
 
   /* Mobile action bar */
-  .actionbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: var(--bench); border-top: 2px solid var(--thread); padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)); display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px; }
+  .actionbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: var(--bench); border-top: 2px solid var(--thread); padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)); display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .actionbar a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; text-decoration: none; color: var(--on-dark); font-family: var(--cond); font-weight: 700; font-size: 1.05rem; letter-spacing: .08em; text-transform: uppercase; border: 1.5px solid rgba(242,236,224,.3); }
   .actionbar a svg { width: 18px; height: 18px; }
   .actionbar a.primary { background: var(--oxblood); border-color: var(--oxblood); color: #fff; }
@@ -320,7 +305,6 @@
       <li><a href="#story">Our story</a></li>
       <li><a href="#shop">Shop</a></li>
       <li><a href="#visit">Hours &amp; directions</a></li>
-      <li><a href="#estimate">Free estimate</a></li>
     </ul>
   </div>
 </header>
@@ -334,7 +318,7 @@
       <h1>We fix what you'd rather <span>not replace.</span></h1>
       <p class="lede">Fine shoes, boots, handbags and luggage, repaired at our own bench with the best materials we can buy. Free estimate, no surprises, all work guaranteed.</p>
       <div class="hero-ctas">
-        <a class="btn btn-ox" href="#estimate">Get a free estimate</a>
+        <a class="btn btn-ox" href="tel:+16029531266">Call for a free estimate</a>
         <a class="btn btn-out-light" href="#visit">Hours &amp; directions</a>
       </div>
       <div class="hero-facts">
@@ -605,39 +589,6 @@
     </div>
   </section>
 
-  <section class="estimate" id="estimate">
-    <div class="wrap">
-      <div class="head">
-        <span class="tag">Free estimate</span>
-        <h2>Tell us what needs fixing.</h2>
-        <p class="lede">Describe the item and the problem. We'll reply with a quote and, if you're shipping to us, how to pack it.</p>
-      </div>
-      <form id="estimateForm" novalidate>
-        <div class="form-grid">
-          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
-          <div class="field"><label for="f-contact">Phone or email</label><input id="f-contact" name="contact" type="text" autocomplete="tel" required></div>
-          <div class="field">
-            <label for="f-item">What is it?</label>
-            <select id="f-item" name="item" required>
-              <option value="">Choose one</option>
-              <option>Shoes</option><option>Boots</option><option>Handbag</option><option>Luggage</option><option>Belt</option><option>Leather jacket</option><option>Something else</option>
-            </select>
-          </div>
-          <div class="field"><label for="f-brand">Brand (if known)</label><input id="f-brand" name="brand" type="text" placeholder="Allen Edmonds, Tumi, Coach…"></div>
-          <div class="field full"><label for="f-desc">What's wrong with it?</label><textarea id="f-desc" name="description" placeholder="Worn heels, broken strap, stuck zipper, wants a new color…" required></textarea></div>
-          <div class="field full">
-            <label for="f-how">How will we get it?</label>
-            <select id="f-how" name="delivery"><option>I'll bring it into the shop</option><option>I'll ship it (US or Canada)</option></select>
-          </div>
-        </div>
-        <div class="form-foot">
-          <div class="form-status" id="formStatus" role="status"></div>
-          <div><button class="btn btn-ox" type="submit">Send estimate request</button></div>
-          <p class="fine">Prefer to talk? Call <a href="tel:+16029531266">602-953-1266</a> during shop hours.</p>
-        </div>
-      </form>
-    </div>
-  </section>
 
 </main>
 
@@ -663,7 +614,6 @@
         <li><a href="#process">How it works</a></li>
         <li><a href="#story">Our story</a></li>
         <li><a href="#shop">In the shop</a></li>
-        <li><a href="#estimate">Free estimate</a></li>
       </ul>
     </div>
     <div class="foot-bottom">
@@ -673,9 +623,8 @@
 </footer>
 
 <nav class="actionbar" aria-label="Quick actions">
-  <a href="tel:+16029531266"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+  <a class="primary" href="tel:+16029531266"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
   <a href="https://www.google.com/maps/dir/?api=1&destination=12871+N+Tatum+Blvd,+Phoenix,+AZ+85032" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Directions</a>
-  <a class="primary" href="#estimate">Free estimate</a>
 </nav>
 
 <script>
@@ -705,21 +654,6 @@
     } catch (e) { el.querySelector('span').textContent = 'See hours below'; }
   })();
 
-  (function () {
-    var form = document.getElementById('estimateForm'), status = document.getElementById('formStatus');
-    if (!form) return;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var f = form.elements;
-      var missing = ['name', 'contact', 'item', 'description'].filter(function (n) { return !f[n].value.trim(); });
-      if (missing.length) { status.textContent = 'Please fill in your name, how to reach you, what the item is, and what\'s wrong with it.'; status.classList.add('show'); f[missing[0]].focus(); return; }
-      var subject = 'Estimate request: ' + f.item.value + (f.brand.value ? ' (' + f.brand.value.trim() + ')' : '');
-      var body = ['Name: ' + f.name.value.trim(), 'Contact: ' + f.contact.value.trim(), 'Item: ' + f.item.value, 'Brand: ' + (f.brand.value.trim() || 'Not sure'), 'Delivery: ' + f.delivery.value, '', 'What\'s wrong:', f.description.value.trim(), '', '(Photos attached below, if any)'].join('\n');
-      window.location.href = 'mailto:contactus@cobblersdenaz.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      status.textContent = 'Opening your email app with the request filled in. If nothing opens, email contactus@cobblersdenaz.com or call 602-953-1266.';
-      status.classList.add('show');
-    });
-  })();
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
